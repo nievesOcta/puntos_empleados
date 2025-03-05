@@ -1,16 +1,16 @@
-# puntos_emplepados
-
+# Sistema de puntos para empleados
 Proyecto para medir la productividad de los empleados y recompensarlos
 
-## Getting Started
+## Descripción
+Sistema de recompensas basado en una aplicación móvil permitirá a John
+Deere incentivar el compromiso, la productividad y las buenas prácticas dentro de la empresa. Al
+integrar un sistema de puntos acumulables por actividades alineadas con los valores de la empresa,
+se fomentará un sentido de pertenencia y reconocimiento entre los empleados, promoviendo así un
+ambiente laboral más dinámico y competitivo de manera saludable. Se tiene planeado
+principalmente que los puntos sean canjeables para obtener mercancía de John Deere, entre otras
+cosas. 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Integrantes
++ José Mauricio Vazquez Reyes 2109439
++ Nicolas Mauricio Cantú Salinas 2013576
++ Julián Romero Hinojosa 2077969
