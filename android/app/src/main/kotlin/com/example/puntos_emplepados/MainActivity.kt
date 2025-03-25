@@ -1,4 +1,4 @@
-package com.example.puntos_emplepados
+package com.example.puntos_empleados
 
 import io.flutter.embedding.android.FlutterActivity
 
