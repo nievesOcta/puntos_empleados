@@ -1,0 +1,1 @@
+ C:\\Users\\nicol\\OneDrive\\Documentos\\Facultad\\7\ Semestre\\Lab\ \ Moviles\\puntos_empleados\\.dart_tool\\flutter_build\\8bdce2a90cc51ae0befca903be1f1048\\native_assets.json: 

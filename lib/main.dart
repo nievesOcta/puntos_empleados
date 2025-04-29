@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:puntos_empleados/screens/employee_list_screen.dart';
+//import 'screens/login_screen.dart'; // Importa la nueva pantalla de login
+import 'screens/dashboard_screen.dart'; // Importa la nueva pantalla de login
+
 
 void main() {
   runApp(EmployeePointRankingApp());
@@ -13,7 +15,7 @@ class EmployeePointRankingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: EmployeeListScreen(),
+      home: const DashboardScreen(),
     );
   }
 }
