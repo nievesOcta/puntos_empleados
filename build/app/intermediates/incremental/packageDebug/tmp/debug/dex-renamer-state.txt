@@ -1,8 +1,8 @@
-#Tue Apr 29 12:59:07 CST 2025
-base.0=C\:\\Users\\nicol\\OneDrive\\Documentos\\Facultad\\7 Semestre\\Lab  Moviles\\puntos_empleados\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\nicol\\OneDrive\\Documentos\\Facultad\\7 Semestre\\Lab  Moviles\\puntos_empleados\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\nicol\\OneDrive\\Documentos\\Facultad\\7 Semestre\\Lab  Moviles\\puntos_empleados\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
-base.3=C\:\\Users\\nicol\\OneDrive\\Documentos\\Facultad\\7 Semestre\\Lab  Moviles\\puntos_empleados\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+#Tue Apr 29 16:29:49 CST 2025
+base.0=/home/latas/StudioProjects/puntos_empleados/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/home/latas/StudioProjects/puntos_empleados/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/home/latas/StudioProjects/puntos_empleados/build/app/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
+base.3=/home/latas/StudioProjects/puntos_empleados/build/app/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=1/classes.dex

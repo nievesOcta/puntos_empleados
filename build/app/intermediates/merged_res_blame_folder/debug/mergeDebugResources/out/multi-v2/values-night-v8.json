@@ -4,7 +4,7 @@
             "outputFile": "com.example.puntos_empleados.app-mergeDebugResources-24:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nicol\\OneDrive\\Documentos\\Facultad\\7 Semestre\\Lab  Moviles\\puntos_empleados\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "/home/latas/StudioProjects/puntos_empleados/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
