@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:puntos_empleados/screens/dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,12 +26,22 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('¡Inicio de sesión exitoso!')),
       );
+      _onLoginSuccess();
     } else {
       // Credenciales inválidas
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Matrícula o contraseña incorrectas.')),
       );
     }
+  }
+
+  void _onLoginSuccess() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const DashboardScreen(),
+      ),
+    );
   }
 
   @override

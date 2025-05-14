@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:puntos_empleados/screens/inicio_screen.dart';
+import 'package:puntos_empleados/screens/login_screen.dart';
 import 'package:puntos_empleados/screens/tareas_screen.dart';
 import 'package:puntos_empleados/screens/puntos_screen.dart';
 import 'package:puntos_empleados/screens/perfil_screen.dart';
@@ -14,12 +15,12 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   int _currentIndex = 0;
 
-  // Definimos las pantallas para cada pestaña como una lista de widgets
+  // Removemos LoginScreen de las páginas y comenzamos con InicioScreen
   final List<Widget> _pages = [
-    const InicioScreen(), // Pantalla de Inicio
-    const TareasScreen(),  // Pantalla de Tareas
-    const PuntosScreen(), // Pantalla de Puntos actualizada
-    const PerfilScreen(),  // Pantalla de Perfil
+    const InicioScreen(), // índice 0
+    const TareasScreen(), // índice 1 
+    const PuntosScreen(), // índice 2
+    const PerfilScreen(), // índice 3
   ];
 
   void _onTabTapped(int index) {

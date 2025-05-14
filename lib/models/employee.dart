@@ -4,13 +4,16 @@ import 'package:puntos_empleados/services/assignment_service.dart';
 class Employee {
   final String id;
   final String name;
-  final String? imageUrl; // URL o ruta de la imagen del empleado
+  final String? imageUrl;
+  List<Assignment> assignments = [];
 
   Employee({
     required this.id,
     required this.name,
     this.imageUrl,
   });
+
+  int get points => assignments.where((a) => a.isCompleted).fold(0, (sum, a) => sum + a.points);
 
   // Método para obtener todas las asignaciones del empleado
   List<Assignment> getAssignments() {
@@ -41,6 +44,7 @@ class Employee {
       employeeId: id,
       isCompleted: isCompleted,
     );
+    assignments.add(assignment);
     AssignmentService.addAssignment(assignment);
   }
 }

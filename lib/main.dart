@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-//import 'screens/login_screen.dart'; // Importa la nueva pantalla de login
-import 'screens/dashboard_screen.dart'; // Importa la nueva pantalla de login
-
+import 'package:puntos_empleados/screens/login_screen.dart';
 
 void main() {
-  runApp(EmployeePointRankingApp());
+  runApp(const MyApp());
 }
 
-class EmployeePointRankingApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ranking de Empleados por Puntos',
+      title: 'Puntos Empleados',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const DashboardScreen(),
+      home: const LoginScreen(), // Establecemos LoginScreen como pantalla inicial
     );
   }
 }

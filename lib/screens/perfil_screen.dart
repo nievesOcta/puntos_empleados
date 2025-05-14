@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:puntos_empleados/screens/login_screen.dart';
 
 class PerfilScreen extends StatefulWidget {
   const PerfilScreen({super.key});
@@ -72,8 +73,12 @@ class _PerfilScreenState extends State<PerfilScreen> {
           const SizedBox(height: 16),
           TextButton(
             onPressed: () {
-              // Acción para cerrar sesión
-              Navigator.of(context).pushReplacementNamed('/login');
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                ),
+              );
             },
             child: const Text('Cerrar Sesión'),
           ),
