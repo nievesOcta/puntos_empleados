@@ -14,6 +14,8 @@ class TareasScreen extends StatefulWidget {
 class _TareasScreenState extends State<TareasScreen> {
   // Lista de empleados
   late List<Employee> _employees;
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
 
   @override
   void initState() {
@@ -38,85 +40,115 @@ class _TareasScreenState extends State<TareasScreen> {
     return SafeArea(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: constraints.maxHeight,
-              ),
-              child: IntrinsicHeight(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
                         'Asignaciones por Empleado',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      Expanded(
-                        child: _employees.isEmpty
-                            ? const Center(child: Text('No hay empleados registrados'))
-                            : SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: _employees
-                                .map((employee) => _buildEmployeeColumn(employee))
-                                .toList(),
-                          ),
-                        ),
+                    ),
+                    Text(
+                      '${_currentPage + 1}/${_employees.length}',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[600],
                       ),
-                      const SizedBox(height: 24), // 👈 Spacer to avoid cutoff
-                    ],
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: _employees.isEmpty
+                    ? const Center(child: Text('No hay empleados registrados'))
+                    : PageView.builder(
+                        controller: _pageController,
+                        onPageChanged: (index) {
+                          setState(() {
+                            _currentPage = index;
+                          });
+                        },
+                        itemCount: _employees.length,
+                        itemBuilder: (context, index) {
+                          return _buildEmployeeColumn(_employees[index]);
+                        },
+                      ),
+              ),
+              // Indicadores de página
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    _employees.length,
+                    (index) => Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _currentPage == index
+                            ? Colors.blue.shade700
+                            : Colors.grey.shade300,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           );
         },
       ),
     );
   }
 
-
   Widget _buildEmployeeColumn(Employee employee) {
     final assignments = employee.getAssignments();
 
     return Container(
-      width: 300,
-      margin: const EdgeInsets.only(right: 16, bottom: 16),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           // Header
           Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.blue.shade700,
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
               ),
             ),
             child: Row(
               children: [
                 CircleAvatar(
+                  radius: 25,
                   backgroundImage: employee.imageUrl != null
                       ? AssetImage(employee.imageUrl!)
                       : null,
                   child: employee.imageUrl == null
-                      ? Text(employee.name[0])
+                      ? Text(employee.name[0], style: const TextStyle(fontSize: 20))
                       : null,
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,7 +156,7 @@ class _TareasScreenState extends State<TareasScreen> {
                       Text(
                         employee.name,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -132,7 +164,7 @@ class _TareasScreenState extends State<TareasScreen> {
                       Text(
                         '${employee.getPoints()} puntos',
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: Colors.white70,
                         ),
                       ),
@@ -143,17 +175,15 @@ class _TareasScreenState extends State<TareasScreen> {
             ),
           ),
 
-          // Scrollable list of assignments
-          SizedBox(
-            height: 400, // You can adjust this to fit your layout
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ...assignments
-                      .map((assignment) => _buildAssignmentCard(assignment, employee)),
-                  _buildAddAssignmentCard(employee),
-                ],
-              ),
+          // Lista de tareas
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.only(top: 8),
+              children: [
+                ...assignments
+                    .map((assignment) => _buildAssignmentCard(assignment, employee)),
+                _buildAddAssignmentCard(employee),
+              ],
             ),
           ),
         ],
